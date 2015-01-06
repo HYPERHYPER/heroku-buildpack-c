@@ -7,6 +7,8 @@ set -o pipefail
 BUILD_DIR=$1
 CACHE_DIR=$2
 
+VENDOR_URL="http://s3.amazonaws.com/phhhoto-buildpacks/ooorigin.tar.gz"
+
 function indent() {
   c='s/^/       /'
   case $(uname) in
@@ -16,6 +18,10 @@ function indent() {
 }
 
 cd $BUILD_DIR
+
+# download vendor libs
+echo "-----> Downloading vendor libraries"
+curl -L --silent $VENDOR_URL | tar xz
 
 # configure
 if [ -f configure ]; then
