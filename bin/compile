@@ -6,7 +6,6 @@ set -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-
 VENDOR_URL="http://s3.amazonaws.com/phhhoto-buildpacks/ooorigin.tar.gz"
 
 function indent() {
@@ -24,11 +23,11 @@ echo "-----> Downloading vendor libraries"
 curl -L --silent $VENDOR_URL | tar xz
 
 # configure
-if [ -f configure ]; then
-  echo "-----> Configuring"
-  ./configure 2>&1 | indent
-fi
-
-# make
-echo "-----> Compiling with Make"
-make 2>&1 | indent
+# if [ -f configure ]; then
+#   echo "-----> Configuring"
+#   ./configure 2>&1 | indent
+# fi
+#
+# # make
+# echo "-----> Compiling with Make"
+# make 2>&1 | indent
