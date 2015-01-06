@@ -6,6 +6,8 @@ set -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+
+VENDOR_DIR="$BUILD_DIR/vendor"
 VENDOR_URL="http://s3.amazonaws.com/phhhoto-buildpacks/ooorigin.tar.gz"
 
 function indent() {
@@ -30,6 +32,6 @@ fi
 
 # make
 echo "-----> Compiling with Make"
-export CPATH
-export LIBRARY_PATH
+export CPATH="$VENDOR_DIR/include"
+export LIBRARY_PATH="$VENDOR_DIR/lib"
 make 2>&1 | indent
