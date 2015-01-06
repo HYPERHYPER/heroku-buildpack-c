@@ -30,4 +30,6 @@ fi
 
 # make
 echo "-----> Compiling with Make"
+export CPATH
+export LIBRARY_PATH
 make 2>&1 | indent
