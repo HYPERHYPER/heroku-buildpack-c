@@ -36,8 +36,8 @@ export CPATH="$VENDOR_DIR/include"
 export LIBRARY_PATH="$VENDOR_DIR/lib"
 make 2>&1 | indent
 
-echo "-----> Updating environment variables"
+echo "-----> Updating shared library locations"
 PROFILE_PATH="$BUILD_DIR/.profile.d/c.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo "export PATH=$VENDOR_DIR/bin:\$PATH" >> $PROFILE_PATH
-echo "export LD_LIBRARY_PATH=$VENDOR_DIR/lib:\$LD_LIBRARY_PATH" >> $PROFILE_PATH
+echo "export PATH=/app/vendor/bin:\$PATH" >> $PROFILE_PATH
+echo "export LD_LIBRARY_PATH=/app/vendor/lib:\$LD_LIBRARY_PATH" >> $PROFILE_PATH
